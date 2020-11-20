@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect } from 'react';
+import './components/TableNumber';
+import TableNumber from './components/TableNumber';
 
 function App() {
+  
+  const [tableNumber, setTableNumber] = useState('');
+
+  useEffect(() => {
+    getTableNumber();
+  }, [])
+
+  const getTableNumber = () => {
+    let tableNumber = Math.floor(Math.random() * 10000);
+    setTableNumber(tableNumber);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TableNumber tableNumber={tableNumber}/>
     </div>
   );
 }
