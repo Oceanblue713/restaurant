@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MenuItem from './MenuItem';
+import menus from '../data/menuData';
 
-const MenuList = () => {
+const MenuList = ({count, handleAdd, handleSubtract, addMenuItem}) => {
   return (
     <div id="menulist">
-      <MenuItem foodImage="./images/ramen-tonkotsu.webp" price="100" name="Miso" count="1" />
+      {menus.map((menu) => (
+        <MenuItem price={menu.price} 
+                  name={menu.name} 
+                  count={count}
+                  handleAdd={handleAdd}
+                  handleSubtract={handleSubtract}
+                  addMenuItem={addMenuItem} />
+      ))}
     </div>
   );
 }

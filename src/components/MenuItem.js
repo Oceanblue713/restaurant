@@ -1,16 +1,17 @@
 import React from 'react';
 
-const MenuItem = ({category, count, foodImage, name, price}) => {
+const MenuItem = ({category, count, foodImage, name, price, handleAdd, handleSubtract, addMenuItem}) => {
+
   return (
-    <div class={category}>
-      <img src={foodImage} art={name} />
-      <p>$ {price}</p>
-      <p>{name}</p>
-      <span>
-        <button>-</button>
-          {count}
-        <button>+</button>
-      </span>
+    <div className="menuItem" onClick={addMenuItem} id={name}>
+        <img src={foodImage} art={name} />
+        <p>$ {price}</p>
+        <p className={name}>{name}</p>
+        <span>
+          <button className={name} onClick={handleSubtract}>-</button>
+            {count}
+          <button onClick={handleAdd}>+</button>
+        </span>
     </div>
   );
 }
