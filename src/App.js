@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import './components/TableNumber';
 import TableNumber from './components/TableNumber';
-import MenuList from './components/MenuList';
+import MenuItem from './components/MenuItem';
 import TotalPrice from './components/TotalPrice';
 import Nav from './components/Nav';
 import menus from './data/menuData';
@@ -13,6 +13,7 @@ function App() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [count, setCount] = useState(0);
   const [orderedMenuPanel, setorderedMenuPanel] = useState(false);
+  const [item, setItem] = useState([]);
 
   useEffect(() => {
     getTableNumber();
@@ -46,8 +47,8 @@ function App() {
   }
 
   const addMenuItem = () => {
-    let menuName = document.getElementsByClassName().id;
-    console.log(menuName);
+    let menuName = document.getElementById("miso");
+    console.log("aaaa");
   }
 
   let orderPanel;
@@ -65,10 +66,12 @@ function App() {
     <div className="App">
       <h1>Ramen</h1>
       <Nav />
-      <MenuList count={count} 
-                handleAdd={handleAdd} 
-                handleSubtract={handleSubtract} 
-                addMenuItem={addMenuItem} />
+      {menus.map((menu) => (
+        <MenuItem name={menu.name} 
+                  price={menu.price}
+                  count={count}
+                  onClick={addMenuItem}/>
+      ))}
       <button onClick={toggleOrderedMenu}>Cart</button>
       {orderPanel}
     </div>
