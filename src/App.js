@@ -64,7 +64,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Ramen</h1>
       <Nav />
       {menus.map((menu) => (
         <MenuItem name={menu.name} 
